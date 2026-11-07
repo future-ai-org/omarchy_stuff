@@ -229,6 +229,21 @@ sudo pacman -Qo /usr/bin/NetworkManager
 
 <br>
 
+If your VPN dont support ipv6, disable it to prevent leaks:
+
+```
+sudo nvim /etc/sysctl.d/70-disable-ipv6.conf
+```
+
+with
+
+```
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+```
+
+<br>
+
 Search NetworkManager configuration and logs for the port:
 
 ```
@@ -737,26 +752,22 @@ net.ipv4.conf.default.log_martians = 1
 
 ---
 
-### Final Hardening Script
+### Check unexpected kernel modules
 
 <br>
 
-- [sh omarchy_harden.sh](scripts/omarchy_harden.sh)
-
+```
+lsmod
+```
 
 <br>
 
 ---
 
-### Futher Resources
+### Security Hardening Scripts
 
 <br>
 
-- [omarchylinux.org/security](https://omarchylinux.org/security/)
-- [arch security](https://wiki.archlinux.org/title/Security)
-- [48 security omarchy](https://github.com/omacom/omarchy/blob/quattro/manual/48-security.md)
-- [omarchy hardening](https://engineered.at/articles/omarchy-hardening)
-- [linux hardening guide](https://madaidans-insecurities.github.io/guides/linux-hardening.html)
-- [hardening arch linux](https://mako088.github.io/arch/hardening_arch.html)
+#### Check [`scripts/security/`](scripts/security/).
 
 <br>

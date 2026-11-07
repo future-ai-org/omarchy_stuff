@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #
 # Every changed file is backed up to /root/hardening-backup-<timestamp>/.
-# also check: https://gist.github.com/von-steinkirch/845e383a1605a926ae43b742274eadd5
 
 set -euo pipefail
 
