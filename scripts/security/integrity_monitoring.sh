@@ -1,6 +1,13 @@
-
 #!/usr/bin/env bash
-
+#
+# Integrity and audit-report monitoring for Omarchy.
+#
+#   - AIDE file-integrity baseline (/etc, /usr/bin, /usr/lib, /boot, ...)
+#   - Daily check (capabilities, SUID/SGID inventory, audit log, disk)
+#   - Desktop notification when the daily check finds something
+#   - Weekly Lynis audit
+#
+# Usage: sudo bash integrity_monitoring.sh
 
 set -Eeuo pipefail
 

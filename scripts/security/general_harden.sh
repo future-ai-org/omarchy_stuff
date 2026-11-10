@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 #
+# Interactive hardening for Omarchy, one step per Lynis finding.
+# Asks before each step. Pass --yes to apply every step without asking.
+#
+# Usage: sudo bash general_harden.sh [--yes]
+#
 # Every changed file is backed up to /root/hardening-backup-<timestamp>/.
 
 set -euo pipefail
@@ -156,7 +161,7 @@ if ask "7) Tighten sshd_config / cron.hourly permissions and add hostname to /et
   [[ -f /etc/ssh/sshd_config ]] && chmod 600 /etc/ssh/sshd_config
   [[ -d /etc/cron.hourly ]] && chmod 700 /etc/cron.hourly
   HN=$(cat /etc/hostname 2>/dev/null || hostname)
-  if ! grep -qwE "$HN" /etc/hosts; then
+  if ! grep -qwF "$HN" /etc/hosts; then
     backup /etc/hosts
     printf '127.0.1.1\t%s.localdomain\t%s\n' "$HN" "$HN" >> /etc/hosts
   fi

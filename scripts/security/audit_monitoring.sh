@@ -1,13 +1,13 @@
-
 #!/usr/bin/env bash
 #
-# Security auditing and notifications
+# Linux Audit rules, desktop alerts and a daily audit report for Omarchy.
 #
-#   - Persistent Linux Audit rules
-#   - Privileged executable monitoring
-#   - One-minute audit event notification checker
-#   - Daily security report
-#   - systemd services and timers
+#   - Persistent Linux Audit rules (identity, sudo, SSH, PAM, modules,
+#     containers, ptrace, privileged executables)
+#   - Per-minute checker that sends a desktop notification for new events
+#   - Daily audit report (30 days kept)
+#
+# Usage: sudo bash audit_monitoring.sh
 
 
 set -Eeuo pipefail
@@ -40,9 +40,17 @@ RULE_FILES=(
 KEYS=(
     privileged
     identity
+    scope
     ssh
     apparmor
     audit
+    pam
+    polkit
+    sysctl
+    modprobe
+    systemd
+    crypto
+    mounts
     module-load
     module-unload
     container-create
@@ -351,9 +359,17 @@ STATE_DIR="/var/lib/audit-alerts"
 KEYS=(
     privileged
     identity
+    scope
     ssh
     apparmor
     audit
+    pam
+    polkit
+    sysctl
+    modprobe
+    systemd
+    crypto
+    mounts
     module-load
     module-unload
     container-create
@@ -530,9 +546,17 @@ aureport --summary -ts yesterday -te today -i || true
 KEYS=(
     privileged
     identity
+    scope
     ssh
     apparmor
     audit
+    pam
+    polkit
+    sysctl
+    modprobe
+    systemd
+    crypto
+    mounts
     module-load
     module-unload
     container-create
@@ -594,9 +618,9 @@ cat > /etc/systemd/system/audit-alert-check.timer <<'EOF'
 Description=Check Security Audit Events Every Minute
 
 [Timer]
-OnCalendar=daily
+OnCalendar=minutely
+AccuracySec=1s
 Persistent=true
-RandomizedDelaySec=5m
 
 [Install]
 WantedBy=timers.target

@@ -1,25 +1,23 @@
-# 💓 Overly-Random Drops of Omarchy Love
+# 🏎️ My Omarchy Stuff
 
 <br>
 
-#### 1️⃣ [Security Stuff](SECURITY.md)
-#### 2️⃣ [Useful Stuff](USEFUL.md)
+#### Personal notes, snippets and scripts for my [Omarchy](https://omarchylinux.org) setup.
 
 <br>
 
+- 🔒 **Security**: my write-up is on the blog: [idea_omarchy_security](http://marina.nullstar.fun/blog/idea_omarchy_security.html)
+- 🧰 [Useful](USEFUL.md): keybindings, tmux, fresh-install steps and small fixes
+- 🦹 [Zed](stuff/zed.md): editor settings and extensions
+- 🛡️ [Scripts](scripts/security/): hardening and monitoring scripts
+
+<br>
 
 ---
 
-## Futher Resources
+## Further Resources
 
-<br>
-
-- [hardening linux ](https://madaidans-insecurities.github.io/guides/linux-hardening.html)
-- [hardening omarchy](http://engineered.at/articles/omarchy-hardening)
-- [omarchylinux.org/security](https://omarchylinux.org/security/)
-- [48 security omarchy](https://github.com/omacom/omarchy/blob/quattro/manual/48-security.md)
-- [hardening arch linux](https://mako088.github.io/arch/hardening_arch.html)
-- [arch security](https://wiki.archlinux.org/title/Security)
-
-
-<br>
+- [Linux hardening guide (madaidan)](https://madaidans-insecurities.github.io/guides/linux-hardening.html)
+- [Hardening Arch Linux](https://mako088.github.io/arch/hardening_arch.html)
+- [Omarchy security](https://omarchylinux.org/security/)
+- [Arch Wiki: Security](https://wiki.archlinux.org/title/Security)
